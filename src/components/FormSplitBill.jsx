@@ -3,15 +3,15 @@ import Button from "./Button";
 import InputField from "./InputField";
 
 function FormSplitBill({ selectedFriend, onSplitBill }) {
-  const [bill, setBill] = useState(0);
-  const [paidByUser, setPaidByUser] = useState(0);
+  const [bill, setBill] = useState("");
+  const [paidByUser, setPaidByUser] = useState("");
   const [whoIsPaying, setWhoIsPaying] = useState("user");
   const paidByFriend = bill - paidByUser;
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!bill || !paidByUser) return;
+    if (bill === "" || paidByUser === "") return;
 
     onSplitBill(whoIsPaying === "user" ? paidByFriend : -paidByUser);
   };
@@ -42,9 +42,14 @@ function FormSplitBill({ selectedFriend, onSplitBill }) {
         placeholder="0.00"
         value={paidByUser}
         onChange={(e) => {
-          const value = Number(e.target.value);
+          const value = e.target.value;
 
-          setPaidByUser(value > bill ? bill : value);
+          if (value === "") {
+            setPaidByUser("");
+            return;
+          }
+
+          setPaidByUser(Number(value) > Number(bill) ? bill : value);
         }}
       />
 
