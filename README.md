@@ -31,7 +31,7 @@ Make sure you have [Node.js](https://nodejs.org/) and npm installed.
 1. Clone the repository:
 
    ```bash
-   git clone YOUR_REPOSITORY_URL
+   git clone https://github.com/Gexof/eat-n-split
    ```
 
 2. Navigate to the project directory:
@@ -78,8 +78,6 @@ src/
 └── main.jsx
 ```
 
-_Note: The structure above is illustrative. Adjust it to match your actual project folders and filenames._
-
 ## 🎯 Project Goals
 
 This project was built as a hands-on React practice project to improve my understanding of:
@@ -100,11 +98,6 @@ This project was built as a hands-on React practice project to improve my unders
 
 ## 👨‍💻 Author
 
-**Mohamed Ashraf**
-
-- GitHub: [Your GitHub Profile](YOUR_GITHUB_PROFILE_URL)
-- LinkedIn: [Your LinkedIn Profile](YOUR_LINKEDIN_PROFILE_URL)
-
----
+## **Mohamed Ashraf**
 
 Made with ❤️ using React and Tailwind CSS.
