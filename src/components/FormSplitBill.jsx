@@ -1,11 +1,11 @@
 import Button from "./Button";
 import InputField from "./InputField";
 
-function FormSplitBill() {
+function FormSplitBill({ selectedFriend }) {
   return (
     <form className="space-y-5 rounded-2xl border border-stone-200 bg-white p-6 shadow-sm sm:p-8">
       <h2 className="text-xl font-bold tracking-tight text-stone-900">
-        Split a bill with friend
+        Split a bill with {selectedFriend.name}
       </h2>
 
       <InputField
@@ -26,7 +26,7 @@ function FormSplitBill() {
 
       <InputField
         id="friend-expense"
-        label="Friend's Expense"
+        label={`${selectedFriend.name} Expense`}
         type="number"
         min="0"
         placeholder="0.00"
@@ -46,7 +46,7 @@ function FormSplitBill() {
           className="w-full appearance-none rounded-xl border border-stone-200 bg-stone-50 px-4 py-3 text-sm text-stone-700 outline-none transition hover:border-stone-300 focus:border-emerald-500 focus:bg-white focus:ring-4 focus:ring-emerald-500/10"
         >
           <option value="user">You</option>
-          <option value="friend">Your friend</option>
+          <option value="friend">{selectedFriend.name}</option>
         </select>
       </div>
 

@@ -27,9 +27,21 @@ const initialFriends = [
 
 function App() {
   const [showAddFriend, setShowAddFriend] = useState(false);
+  const [friends, setFriends] = useState(initialFriends);
+  const [selectedFriend, setSelctedFriend] = useState(null);
 
+  // ** Handlers
   const handleShowAddFriend = () => {
     setShowAddFriend((prev) => !prev);
+  };
+
+  const handleAddFriend = (friend) => {
+    setFriends((prev) => [...prev, friend]);
+    setShowAddFriend(false);
+  };
+
+  const handleSelectedFriend = (friend) => {
+    setSelctedFriend(friend);
   };
 
   return (
@@ -69,11 +81,11 @@ function App() {
               </span>
             </div>
 
-            <FriendsList />
+            <FriendsList friends={friends} onSelection={handleSelectedFriend} />
 
             {showAddFriend && (
               <div className="mt-5">
-                <FormAddFriend />
+                <FormAddFriend onAddFriedns={handleAddFriend} />
               </div>
             )}
 
@@ -86,7 +98,9 @@ function App() {
 
           {/* Split Bill */}
           <section>
-            <FormSplitBill />
+            {selectedFriend && (
+              <FormSplitBill selectedFriend={selectedFriend} />
+            )}
           </section>
         </div>
 

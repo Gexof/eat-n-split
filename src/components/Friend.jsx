@@ -1,6 +1,6 @@
 import Button from "./Button";
 
-function Friend({ friend }) {
+function Friend({ friend, onSelection }) {
   return (
     <li className="flex items-center gap-3 rounded-xl p-3 transition hover:bg-stone-100 sm:gap-4">
       <img
@@ -31,7 +31,7 @@ function Friend({ friend }) {
         )}
       </div>
 
-      <Button>Select</Button>
+      <Button onClick={() => onSelection(friend)}>Select</Button>
     </li>
   );
 }
