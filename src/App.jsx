@@ -41,9 +41,9 @@ function App() {
     <main className="relative isolate min-h-screen overflow-hidden bg-[#f7f8f5] px-4 py-10 text-stone-800 sm:px-6 lg:py-16">
       {/* Ambient Background */}
       <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-        <div className="absolute -left-40 -top-32 h-[30rem] w-[30rem] rounded-full bg-emerald-200/30 blur-[100px]" />
-        <div className="absolute -right-40 top-[20%] h-[28rem] w-[28rem] rounded-full bg-lime-200/20 blur-[110px]" />
-        <div className="absolute -bottom-48 left-[30%] h-[30rem] w-[30rem] rounded-full bg-amber-100/40 blur-[120px]" />
+        <div className="absolute -left-40 -top-32 h-120 w-120 rounded-full bg-emerald-200/30 blur-[100px]" />
+        <div className="absolute -right-40 top-[20%] h-112 w-md rounded-full bg-lime-200/20 blur-[110px]" />
+        <div className="absolute -bottom-48 left-[30%] h-120 w-120 rounded-full bg-amber-100/40 blur-[120px]" />
       </div>
 
       <div className="relative mx-auto max-w-5xl">
@@ -70,7 +70,7 @@ function App() {
             <div className="pointer-events-none absolute -bottom-24 -left-16 h-56 w-56 rounded-full bg-amber-100/60 blur-3xl" />
 
             <div className="relative px-6 py-12 text-center sm:px-12 sm:py-16">
-              <div className="relative mx-auto mb-8 flex h-24 w-24 items-center justify-center rounded-[2rem] border border-emerald-100 bg-gradient-to-br from-emerald-50 to-emerald-100/70 shadow-sm">
+              <div className="relative mx-auto mb-8 flex h-24 w-24 items-center justify-center rounded-4xl border border-emerald-100 bg-linear-to-br from-emerald-50 to-emerald-100/70 shadow-sm">
                 <span className="text-5xl">🍽️</span>
 
                 <span className="absolute -right-2 -top-2 flex h-9 w-9 items-center justify-center rounded-xl border-4 border-white bg-emerald-600 text-lg text-white shadow-sm">
