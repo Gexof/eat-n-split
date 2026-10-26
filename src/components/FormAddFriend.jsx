@@ -1,15 +1,26 @@
 import Button from "./Button";
+import InputField from "./InputField";
 
 function FormAddFriend() {
   return (
-    <form>
-      <label>Friend Name</label>
-      <input type="text" />
+    <form className="space-y-5 rounded-2xl border border-stone-200 bg-stone-50 p-5">
+      <InputField
+        id="friend-name"
+        label="Friend Name"
+        type="text"
+        placeholder="Enter friend's name"
+      />
 
-      <label>Image Url</label>
-      <input type="text" />
+      <InputField
+        id="friend-image"
+        label="Image URL"
+        type="url"
+        placeholder="https://example.com/photo.jpg"
+      />
 
-      <Button>Add</Button>
+      <div className="flex justify-end pt-1">
+        <Button>Add</Button>
+      </div>
     </form>
   );
 }
