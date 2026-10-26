@@ -1,9 +1,26 @@
+import { useState } from "react";
 import Button from "./Button";
 import InputField from "./InputField";
 
-function FormSplitBill({ selectedFriend }) {
+function FormSplitBill({ selectedFriend, onSplitBill }) {
+  const [bill, setBill] = useState(0);
+  const [paidByUser, setPaidByUser] = useState(0);
+  const [whoIsPaying, setWhoIsPaying] = useState("user");
+  const paidByFriend = bill - paidByUser;
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!bill || !paidByUser) return;
+
+    onSplitBill(whoIsPaying === "user" ? paidByFriend : -paidByUser);
+  };
+
   return (
-    <form className="space-y-5 rounded-2xl border border-stone-200 bg-white p-6 shadow-sm sm:p-8">
+    <form
+      className="space-y-5 rounded-2xl border border-stone-200 bg-white p-6 shadow-sm sm:p-8"
+      onSubmit={handleSubmit}
+    >
       <h2 className="text-xl font-bold tracking-tight text-stone-900">
         Split a bill with {selectedFriend.name}
       </h2>
@@ -12,8 +29,9 @@ function FormSplitBill({ selectedFriend }) {
         id="bill-value"
         label="Bill Value"
         type="number"
-        min="0"
         placeholder="0.00"
+        value={bill}
+        onChange={(e) => setBill(Number(e.target.value))}
       />
 
       <InputField
@@ -22,6 +40,12 @@ function FormSplitBill({ selectedFriend }) {
         type="number"
         min="0"
         placeholder="0.00"
+        value={paidByUser}
+        onChange={(e) => {
+          const value = Number(e.target.value);
+
+          setPaidByUser(value > bill ? bill : value);
+        }}
       />
 
       <InputField
@@ -31,6 +55,7 @@ function FormSplitBill({ selectedFriend }) {
         min="0"
         placeholder="0.00"
         disabled
+        value={paidByFriend}
       />
 
       <div className="space-y-2">
@@ -44,6 +69,8 @@ function FormSplitBill({ selectedFriend }) {
         <select
           id="who-is-paying"
           className="w-full appearance-none rounded-xl border border-stone-200 bg-stone-50 px-4 py-3 text-sm text-stone-700 outline-none transition hover:border-stone-300 focus:border-emerald-500 focus:bg-white focus:ring-4 focus:ring-emerald-500/10"
+          value={whoIsPaying}
+          onChange={(e) => setWhoIsPaying(e.target.value)}
         >
           <option value="user">You</option>
           <option value="friend">{selectedFriend.name}</option>

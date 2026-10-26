@@ -45,6 +45,18 @@ function App() {
     setShowAddFriend(false);
   };
 
+  const handleSplitBill = (value) => {
+    setFriends((prev) =>
+      prev.map((friend) =>
+        friend.id === selectedFriend.id
+          ? { ...friend, balance: friend.balance + value }
+          : friend,
+      ),
+    );
+
+    setSelctedFriend(null);
+  };
+
   return (
     <main className="min-h-screen bg-stone-100 px-4 py-10 text-stone-800 sm:px-6 lg:py-16">
       <div className="mx-auto max-w-5xl">
@@ -104,7 +116,10 @@ function App() {
           {/* Split Bill */}
           <section>
             {selectedFriend && (
-              <FormSplitBill selectedFriend={selectedFriend} />
+              <FormSplitBill
+                selectedFriend={selectedFriend}
+                onSplitBill={handleSplitBill}
+              />
             )}
           </section>
         </div>
