@@ -41,7 +41,8 @@ function App() {
   };
 
   const handleSelectedFriend = (friend) => {
-    setSelctedFriend(friend);
+    setSelctedFriend((prev) => (prev?.id === friend.id ? null : friend));
+    setShowAddFriend(false);
   };
 
   return (
@@ -77,11 +78,15 @@ function App() {
               </div>
 
               <span className="flex h-9 min-w-9 items-center justify-center rounded-xl bg-emerald-50 px-2 text-sm font-bold text-emerald-700">
-                3
+                {friends.length}
               </span>
             </div>
 
-            <FriendsList friends={friends} onSelection={handleSelectedFriend} />
+            <FriendsList
+              friends={friends}
+              onSelection={handleSelectedFriend}
+              selectedFriend={selectedFriend}
+            />
 
             {showAddFriend && (
               <div className="mt-5">
